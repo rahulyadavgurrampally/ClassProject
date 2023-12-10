@@ -16,7 +16,6 @@ def setup_faculty_department_database():
         {"faculty_id": 1, "name": "Professor Smith", "department_id": 1},
         {"faculty_id": 2, "name": "Dr. Johnson", "department_id": 2},
         {"faculty_id": 3, "name": "Professor Davis", "department_id": 3},
-        # Add more faculty members as needed
     ]
 
     department_data = [
@@ -89,10 +88,10 @@ def test_setup_faculty_department_database():
     setup_faculty_department_database()
 
     faculty = get_faculty()
-    assert len(faculty) == 3  # Adjust based on the number of faculty members in the initial data
+    assert len(faculty) == 3 
 
     departments = get_departments()
-    assert len(departments) == 3  # Adjust based on the number of departments in the initial data
+    assert len(departments) == 3 
 
 def test_get_faculty():
     print("testing get_faculty()")
@@ -125,7 +124,7 @@ def test_add_faculty():
     setup_faculty_department_database()
     faculty = get_faculty()
     original_length = len(faculty)
-    add_faculty("Dr. Brown", 2)  # Assigning to an existing department (adjust based on data)
+    add_faculty("Dr. Brown", 2) 
     faculty = get_faculty()
     assert len(faculty) == original_length + 1
     names = [faculty_member['name'] for faculty_member in faculty]
@@ -136,7 +135,7 @@ def test_add_department():
     setup_faculty_department_database()
     departments = get_departments()
     original_length = len(departments)
-    add_department("Chemistry", 4)  # Specify the department_id when adding a new department
+    add_department("Chemistry", 4)  
     departments = get_departments()
     assert len(departments) == original_length + 1
     names = [department['name'] for department in departments]
@@ -162,7 +161,7 @@ def test_update_faculty():
     original_department_id = faculty[0]['department_id']
     faculty_id_to_update = faculty[0]['faculty_id']
     new_name = "Updated Name"
-    new_department_id = 4  # Assuming 4 is a valid department_id
+    new_department_id = 4  
     update_faculty(faculty_id_to_update, new_name, new_department_id)
     faculty = get_fac
 

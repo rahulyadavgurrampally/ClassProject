@@ -11,7 +11,6 @@ def get_list():
     departments = database.get_departments()
     return template("list_faculty_department.tpl", faculty=faculty, departments=departments , search_faculty="")
 
-# Faculty routes
 
 @route("/add_faculty")
 def get_add_faculty():
@@ -49,7 +48,6 @@ def post_update_faculty():
     database.update_faculty(int(faculty_id), name, int(department_id))
     redirect("/list")
 
-# # Department routes
 
 @route("/add_department")
 def get_add_department():
@@ -66,7 +64,6 @@ def get_delete_department(department_id):
     database.delete_department(int(department_id))
     redirect("/list")
 
-# Add a new route for handling faculty search
 @route("/search_faculty", method="GET")
 def get_search_faculty():
     search_term = request.query.get("search_faculty", "")
@@ -75,7 +72,6 @@ def get_search_faculty():
     return template("list_faculty_department.tpl", faculty=faculty, departments=departments, search_faculty=search_term)
 
     
-# Add a new function in the database.py file to perform faculty search
 def search_faculty(search_faculty):
     faculty_data = db["faculty"].find(name={"$like": f"%{search_faculty}%"})
     departments = {d['id']: d['name'] for d in db["department"].find()}
